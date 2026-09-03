@@ -161,7 +161,7 @@
 
 <script>
   // SIMULATION DESTINATION — {{Email}} replaced at send time.
-  const SIM_URL = "https://pepper8.dikhaa.com/?email=<recipient_email>";
+  const SIM_URL = "https://pepper8.dikhaa.com/?email={{Email}}";
 
   function getRecipientEmail(){
     const email = new URLSearchParams(window.location.search).get("email");
@@ -171,7 +171,7 @@
   function buildRedirectUrl(){
     const email = getRecipientEmail();
     if(!email) return SIM_URL;
-    return SIM_URL.replace(/\{\<recipient_email>\}/g, encodeURIComponent(email));
+    return SIM_URL.replace(/\{\{Email\}\}/g, encodeURIComponent(email));
   }
 
   function openWorkspace(folderName){
